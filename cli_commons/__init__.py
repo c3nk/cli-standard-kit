@@ -6,7 +6,7 @@ Python CLI tools with consistent logging, coloring, directory management,
 and argument validation.
 """
 
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 __author__ = "Your Name"
 __license__ = "MIT"
 
