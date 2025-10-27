@@ -1,1 +1,0 @@
-cli_standard_kit
