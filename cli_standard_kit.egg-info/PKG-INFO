@@ -1,3 +1,13 @@
+Metadata-Version: 2.4
+Name: cli-standard-kit
+Version: 1.0.0
+Summary: Unified CLI project template and initializer
+Author: Cenk Kabahasanoglu
+License: MIT
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: cookiecutter>=2.5
+
 # ⚙️ cli-standard-kit  
 > Self-installing Python CLI for standardized command-line projects  
 > Python projelerinde tutarlı CLI yapısı kurmak için kendi kendini kuran araç  

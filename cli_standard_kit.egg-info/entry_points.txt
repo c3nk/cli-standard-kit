@@ -1,0 +1,2 @@
+[console_scripts]
+cli-standard-kit = cli_standard_kit.__main__:main
