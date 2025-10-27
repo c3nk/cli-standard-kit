@@ -1,4 +1,4 @@
-# cli-commons
+# cli-standard-kit
 
 Reusable CLI utilities for consistent command-line interfaces in Python.
 
@@ -16,20 +16,20 @@ This package provides common building blocks for standardized, professional Pyth
 ### From PyPI
 
 ```bash
-pip install cli-commons
+pip install cli-standard-kit
 ```
 
 ### Development (editable)
 
 ```bash
-git clone https://github.com/yourusername/cli-commons.git
-cd cli-commons
+git clone https://github.com/c3nk/cli-standard-kit.git
+cd cli-standard-kit
 pip install -e .
 ```
 
 ## Quick Start
 
-Below is a minimal CLI using cli-commons components.
+Below is a minimal CLI using cli-standard-kit components.
 
 ```python
 import sys

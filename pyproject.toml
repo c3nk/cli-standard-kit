@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cli-commons"
+name = "cli-standard-kit"
 version = "1.0.2"
 description = "Reusable CLI utilities for consistent command-line interfaces"
 readme = "README.md"
@@ -25,10 +25,10 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/c3nk/cli-commons"
-Documentation = "https://github.com/c3nk/cli-commons#readme"
-Repository = "https://github.com/c3nk/cli-commons.git"
-Issues = "https://github.com/c3nk/cli-commons/issues"
+Homepage = "https://github.com/c3nk/cli-standard-kit"
+Documentation = "https://github.com/c3nk/cli-standard-kit#readme"
+Repository = "https://github.com/c3nk/cli-standard-kit.git"
+Issues = "https://github.com/c3nk/cli-standard-kit/issues"
 
 [tool.setuptools]
 packages = ["cli_commons"]
