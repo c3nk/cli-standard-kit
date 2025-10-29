@@ -1,0 +1,18 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon files
+Icon?
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.Spotlight-V100
+.Trashes
+
+# Directories
+.DiskSpaceInfo
+.VolumeIcon.icns

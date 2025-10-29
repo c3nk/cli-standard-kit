@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-echo "🚀 Building cli-commons for PyPI..."
+echo "Building cli-commons for PyPI..."
 echo ""
 
 if ! python -c "import build, twine" 2>/dev/null; then
@@ -16,12 +16,12 @@ echo "Building package..."
 python -m build
 
 echo ""
-echo "✅ Build complete!"
+echo "Build complete!"
 ls -lh dist/
 
 echo ""
-echo "🔍 Checking package..."
+echo "Checking package..."
 twine check dist/*
 
 echo ""
-echo "📝 Next: twine upload dist/*"
+echo "Next: twine upload dist/*"
