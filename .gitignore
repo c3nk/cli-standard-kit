@@ -17,6 +17,22 @@ Icon?
 .DiskSpaceInfo
 .VolumeIcon.icns
 
+# Python build artifacts
+dist/
+build/
+*.egg-info/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
 
 
 
