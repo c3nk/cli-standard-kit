@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cli-standard-kit"
-version = "1.0.3"
+version = "1.0.4"
 description = "Reusable CLI framework and utilities for consistent command-line interfaces"
 readme = "README.md"
 # License specified in classifiers for compatibility
