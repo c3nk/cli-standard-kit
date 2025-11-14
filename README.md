@@ -43,7 +43,7 @@ pip install -e .
 Create a CLI with commands using the framework:
 
 ```python
-from cli_commons import StandardCLI, BaseCommand
+from cli_standard_kit import StandardCLI, BaseCommand
 from argparse import ArgumentParser
 
 class ListCommand(BaseCommand):
@@ -94,11 +94,11 @@ Below is a minimal CLI using cli-standard-kit utility components.
 ```python
 import sys
 from pathlib import Path
-from cli_commons.parser import create_standard_parser, validate_arguments
-from cli_commons.logger import setup_logging
-from cli_commons.directories import setup_directories
-from cli_commons.colors import MessageFormatter
-from cli_commons.file_ops import get_files_recursive, process_batch_files
+from cli_standard_kit.parser import create_standard_parser, validate_arguments
+from cli_standard_kit.logger import setup_logging
+from cli_standard_kit.directories import setup_directories
+from cli_standard_kit.colors import MessageFormatter
+from cli_standard_kit.file_ops import get_files_recursive, process_batch_files
 
 
 def process_file(file_path: Path) -> tuple[bool, str]:
@@ -190,7 +190,7 @@ if __name__ == "__main__":
 ### StandardCLI
 
 ```python
-from cli_commons import StandardCLI, BaseCommand
+from cli_standard_kit import StandardCLI, BaseCommand
 
 cli = StandardCLI(
     prog="mytool",
@@ -241,7 +241,7 @@ cli.run()
 ### colors.py
 
 ```python
-from cli_commons.colors import Colors, MessageFormatter
+from cli_standard_kit.colors import Colors, MessageFormatter
 
 print(f"{Colors.GREEN}Success{Colors.END}")
 print(MessageFormatter.success("Operation completed"))
@@ -253,7 +253,7 @@ print(MessageFormatter.warning("Be careful"))
 
 ```python
 from pathlib import Path
-from cli_commons.logger import setup_logging
+from cli_standard_kit.logger import setup_logging
 
 logger = setup_logging()  # creates ./logs/process_<timestamp>.log
 logger = setup_logging(verbose=True)
@@ -270,7 +270,7 @@ logger.error("Error message")
 
 ```python
 from pathlib import Path
-from cli_commons.directories import setup_directories, get_timestamped_dir
+from cli_standard_kit.directories import setup_directories, get_timestamped_dir
 
 dirs = setup_directories()  # inputs/, outputs/, inputs/processed/, inputs/failed/, logs/
 timestamped = get_timestamped_dir(Path("./outputs"), prefix="run")
@@ -280,7 +280,7 @@ timestamped = get_timestamped_dir(Path("./outputs"), prefix="run")
 
 ```python
 from pathlib import Path
-from cli_commons.file_ops import (
+from cli_standard_kit.file_ops import (
     process_batch_files,
     get_files_recursive,
     get_output_filename,
@@ -299,7 +299,7 @@ safe_rename(Path("old.txt"), Path("new.txt"), logger)
 ### parser.py
 
 ```python
-from cli_commons.parser import (
+from cli_standard_kit.parser import (
     create_standard_parser,
     validate_arguments,
     validate_paths,

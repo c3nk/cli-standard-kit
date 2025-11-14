@@ -31,7 +31,7 @@ Repository = "https://github.com/c3nk/cli-standard-kit.git"
 Issues = "https://github.com/c3nk/cli-standard-kit/issues"
 
 [tool.setuptools]
-packages = ["cli_commons"]
+packages = ["cli_standard_kit"]
 
 [tool.setuptools.package-data]
-cli_commons = ["py.typed"]
+cli_standard_kit = ["py.typed"]

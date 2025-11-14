@@ -1,5 +1,5 @@
 """
-cli_commons - Reusable CLI utilities for consistent command-line interfaces.
+cli_standard_kit - Reusable CLI utilities for consistent command-line interfaces.
 
 A package containing common utilities for building standardized, professional 
 Python CLI tools with consistent logging, coloring, directory management, 
