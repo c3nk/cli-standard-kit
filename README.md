@@ -1,15 +1,24 @@
 # cli-standard-kit
 
-Reusable CLI utilities for consistent command-line interfaces in Python.
+Reusable CLI framework and utilities for consistent command-line interfaces in Python.
 
-This package provides common building blocks for standardized, professional Python CLI tools:
+This package provides a complete framework and common building blocks for standardized, professional Python CLI tools:
+
+## 🎯 Core Framework
+
+- **StandardCLI**: Manage argparse and command execution with subcommand support
+- **BaseCommand**: Abstract base class for creating reusable CLI commands
+- **Command Registration**: Dynamically register commands with `cli.register()`
+- **Automatic Help**: Built-in help generation for commands and subcommands
+
+## 🛠️ Utilities
 
 - Standardized logging (file + console) with verbose/quiet modes
 - ANSI color utilities and message formatting templates
 - Conventional directory layout helpers
 - File operations for batch processing with progress tracking
 - Argument parser with a consistent set of flags
-- Pure Python (stdlib only)
+- Pure Python (stdlib only, argparse-based)
 
 ## Installation
 
@@ -29,7 +38,58 @@ pip install -e .
 
 ## Quick Start
 
-Below is a minimal CLI using cli-standard-kit components.
+### Using the Framework
+
+Create a CLI with commands using the framework:
+
+```python
+from cli_commons import StandardCLI, BaseCommand
+from argparse import ArgumentParser
+
+class ListCommand(BaseCommand):
+    name = "list"
+    description = "List items"
+    
+    def add_arguments(self, parser: ArgumentParser) -> None:
+        parser.add_argument("--all", action="store_true", help="Show all items")
+    
+    def run(self, args) -> int:
+        print("Listing items...")
+        if args.all:
+            print("All items")
+        return 0
+
+class CreateCommand(BaseCommand):
+    name = "create"
+    description = "Create a new item"
+    
+    def add_arguments(self, parser: ArgumentParser) -> None:
+        parser.add_argument("name", help="Item name")
+    
+    def run(self, args) -> int:
+        print(f"Creating {args.name}...")
+        return 0
+
+def main():
+    cli = StandardCLI("mytool", "My awesome CLI tool")
+    cli.register(ListCommand())
+    cli.register(CreateCommand())
+    return cli.run()
+
+if __name__ == "__main__":
+    exit(main())
+```
+
+Usage:
+```bash
+mytool list --all
+mytool create myitem
+mytool --help
+```
+
+### Using Utilities Only
+
+Below is a minimal CLI using cli-standard-kit utility components.
 
 ```python
 import sys
@@ -125,7 +185,58 @@ if __name__ == "__main__":
     sys.exit(main())
 ```
 
-## Modules
+## Framework API
+
+### StandardCLI
+
+```python
+from cli_commons import StandardCLI, BaseCommand
+
+cli = StandardCLI(
+    prog="mytool",
+    description="My CLI tool",
+    epilog="See https://example.com for more info"
+)
+
+# Register commands
+cli.register(MyCommand())
+
+# Run CLI
+exit_code = cli.run()
+```
+
+### BaseCommand
+
+```python
+from cli_commons import BaseCommand
+from argparse import ArgumentParser
+
+class MyCommand(BaseCommand):
+    name = "mycmd"  # Required: command name
+    description = "Does something"  # Optional: shown in help
+    
+    def add_arguments(self, parser: ArgumentParser) -> None:
+        """Add command-specific arguments."""
+        parser.add_argument("--flag", action="store_true")
+        parser.add_argument("input", help="Input file")
+    
+    def run(self, args) -> int:
+        """Execute command logic. Return 0 for success, non-zero for error."""
+        print(f"Processing {args.input}")
+        return 0
+```
+
+### get_cli() Helper
+
+```python
+from cli_commons import get_cli
+
+cli = get_cli("mytool", "My tool description")
+cli.register(MyCommand())
+cli.run()
+```
+
+## Utility Modules
 
 ### colors.py
 
@@ -245,8 +356,43 @@ project/
 
 MIT
 
-## Version History
+## Roadmap
 
-- 1.0.0 (2025-10-27): Initial release
+### Core Features (Planned)
+
+- **Auto Command Discovery**: Automatically discover and register commands from a directory
+- **Global Flags**: Add `--verbose`, `--quiet`, `--dry-run` flags available to all commands
+- **Command Aliases**: Support short names for commands (e.g., `ls` → `list`)
+- **Command Groups**: Organize commands into groups (e.g., `db:migrate`, `db:seed`)
+
+### Advanced Features (Planned)
+
+- **Middleware/Hooks System**: Pre/post command execution hooks for logging, timing, authentication
+- **Configuration File Support**: Load settings from YAML/JSON/TOML config files
+- **Enhanced Error Handling**: Centralized exception handling with user-friendly error messages
+- **Progress Indicators**: Progress bars and spinners for long-running operations
+
+### Developer Experience (Planned)
+
+- **Command Metadata**: Rich command metadata (version, author, examples) for enhanced help
+- **Testing Utilities**: Mock helpers and testing framework for CLI commands
+- **Tab Completion**: Bash/Zsh tab completion scripts for commands and arguments
+- **Plugin System**: Support for external plugins and extensible architecture
+
+### Utility Enhancements (Planned)
+
+- **Table/Formatter Utilities**: Table formatting and JSON/CSV export utilities
+- **Interactive Prompts**: User input prompts and confirmation dialogs
+- **File Watchers**: File change monitoring and auto-reload functionality
+
+See [CHANGELOG.md](CHANGELOG.md) for version history and recent changes.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+MIT
 
 

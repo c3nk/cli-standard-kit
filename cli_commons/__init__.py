@@ -7,9 +7,15 @@ and argument validation.
 """
 
 __version__ = "1.0.3"
-__author__ = "Your Name"
+__author__ = "Cenk Kabahasanoglu"
 __license__ = "MIT"
 
+# Core CLI framework exports
+from .command_base import BaseCommand
+from .cli_core import StandardCLI
+from .loader import get_cli
+
+# Utility modules
 from . import colors
 from . import logger
 from . import directories
@@ -17,9 +23,14 @@ from . import file_ops
 from . import parser
 
 __all__ = [
+    # Core framework
+    'BaseCommand',
+    'StandardCLI',
+    'get_cli',
+    # Utilities
     'colors',
     'logger', 
     'directories',
     'file_ops',
-    'parser'
+    'parser',
 ]
